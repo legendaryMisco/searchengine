@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+</head>
+
+<body>
+    <center class="nav-list">
+        <h1>S.ENGINE</h1>
+        <form action='{% url "home" %}' method="post">
+            {% csrf_token %}
+        <input class="mysi" type="search" name="search" value="{{query}}"autocomplete=True>
+        <br><br>
+        <button class="mysb" type="submit">Submit</button>
+        </form>
+    </center>
+    <hr>
+    {% if results%}
+            {% for result in results%}
+                <h2><a href="https://{{ result.2}}">{{ result.0 }}</a></h1>
+                <span>{{ result.1 }}</span>
+                <a href="https://{{ result.2}}">{{ result.2 }}</a>
+                <br/>
+                <br/>
+            {% endfor%}
+        <br><br>
+    <center><p>S.ENGINE 2022 L.M</p></center>
+        {% endif %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav-list {
+            font-size: 1.1rem;
+            font-family: monospace;
+            padding: 16px;
+            margin: 12px;
+        }
+        .mysi{
+            min-width: 90%;
+            padding: 10px;
+            border:2px solid black;
+            border-radius: calc(0.5 * 44px);
+            font-size: 1.1rem
+        }
+        .mysb{
+            width:auto;
+            padding: 10px 20px ;
+            border:1px solid black;
+            border-radius: calc(0.5 * 44px);
+            background-color: rgb(221, 212, 212);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
+        }
+    </style>
+</body>
+
+</html>
